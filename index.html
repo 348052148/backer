@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+	<script src="build/jquery-3.1.0.min.js"></script>
+	<script src="layer/layer.js"></script>
+	<style>
+		*{
+			padding:0;
+			list-style:none;
+			margin:0;
+		}
+		body{
+			color:#555;
+		}
+		#example{
+			width:700px;
+			height:100%;
+			background:#eee;
+			float:left;
+		}
+		#left{
+			width:200px;
+			height:600px;
+			background:#E6E8FA;
+			float:left;
+		}
+		.top{
+			width:100%;
+			height:60px;
+			background:#E6E8FA;
+			
+		}
+		.top h2{
+			height:60px;
+			width:200px;
+			line-height:60px;
+			font-size:20px;
+			color:#666;
+			display:block;
+			text-indent:20px;
+			float:left;
+		}
+		.top ul li{
+			width:120px;
+			height:60px;
+			font-size:14px;
+			float:left;
+			line-height:60px;
+			text-align:center;
+		}
+		.top ul li:hover{
+			background:#eee;
+			cursor:pointer;
+			font-size:15px;
+		}
+	</style>
+  </head>
+  <body>
+	<div class="top">
+		<h2>论坛管理系统</h2>
+		<ul>
+			<li>首页</li>
+			<li>板块管理</li>
+			<li>用户管理</li>
+		</ul>
+	</div>
+	<div id="left">
+		
+	</div>
+    <div id="example">
+		
+	</div>
+    <script type="text/babel">
+	var b = $(document.body).width() - 200;
+	$('#example').css({width:b+'px'});
+	
+	$(window).resize(function(){
+		var b = $(document.body).width() - 200;
+		$('#example').css({width:b+'px'});
+	});
+	var index = layer.load();
+	$('#example').load("http://localhost/ajax.php",{},function(){
+		layer.close(index);
+	});
+	//$("#myDiv").html(htmlobj.responseText);
+	/*
+      var Content = React.createClass({
+		getInitialState: function(){
+			var index = layer.load();
+			var val = "21";
+			$.get("http://localhost/ajax.php",function(data){
+				val = data;
+				//alert(data);
+				layer.close(index);
+				this.state.d=data;
+				val = data;
+				$('#vm').html(data);
+			});
+			
+			return {html:'<h2></h2>'};
+		},
+		  render: function() {
+			//var k = React.createFactory ('<h2>');
+			//React.findDOMNode(this.refs.myTextInput).focus();
+			return <div id={'vm'}></div>;
+		  }
+		});
+
+		ReactDOM.render(
+		  <Content />,
+		  document.getElementById('example')
+		);
+		*/
+    </script>
+  </body>
+</html>
